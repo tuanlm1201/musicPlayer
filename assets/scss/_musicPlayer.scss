@@ -1,0 +1,117 @@
+.musicPlayer {
+  max-width: 375px;
+  width: 100%;
+  max-height: 812px;
+  height: 100%;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0px 5px 20px #2b6b9f;
+  overflow: hidden;
+  position: relative;
+
+  .header {
+    @include font("Bold", 2.5rem, 133%);
+    text-align: center;
+    margin-top: 37px;
+  }
+
+  .content-music {
+    margin-top: 76px;
+
+    .content-music__img {
+      margin: 0 auto 63px;
+      width: 250px;
+      border-radius: 50%;
+      overflow: hidden;
+      animation: spin360 7s infinite linear;
+
+      @keyframes spin360 {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+
+    .content-music__name {
+      text-align: center;
+
+      .name-song {
+        @include font("Bold", 2.3rem, 3.1rem);
+      }
+
+      .name-author {
+        @include font("Regular", 1.7rem, 2.3rem);
+      }
+    }
+  }
+
+  .play-list {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.71);
+    box-shadow: 0px -19px 47px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(21px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 26px 26px 0px 0px;
+  }
+
+  .music-nav {
+    .music-nav__timeline {
+      margin: 50px auto 0;
+      max-width: 310px;
+      background-color: #f2f2f2;
+      border: 3px solid #f2f2f2;
+      border-radius: 3px;
+      position: relative;
+
+      &::before {
+        content: "";
+        width: 100px;
+        background-color: #9570ff;
+        border: 3px solid #9570ff;
+        border-radius: 3px;
+        position: absolute;
+        top: -3px;
+        left: -3px;
+      }
+    }
+
+    .music-control {
+      margin-top: 30px;
+      padding: 0px 33px;
+      display: flex;
+      @include flex(row, center, space-between);
+
+      &__time {
+        @include font("Medium", 1.2rem, 1.6rem);
+        color: #9570ff;
+      }
+
+      &__play {
+        width: 61px;
+        height: 61px;
+        border-radius: 50%;
+        background: linear-gradient(
+            223.53deg,
+            #70c8ff 31.56%,
+            rgba(149, 112, 255, 0.25) 65.16%
+          )
+          no-repeat 100%;
+        backdrop-filter: blur(19.6px);
+        box-shadow: 0px 4px 34px rgba(33, 33, 33, 0.08);
+        display: flex;
+        @include flex(row, center, center);
+      }
+
+      &__time-end {
+        @include font("Medium", 1.2rem, 1.6rem);
+        color: #bdbdbd;
+      }
+    }
+  }
+}

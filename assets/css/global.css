@@ -1,0 +1,387 @@
+@font-face {
+  font-family: "Black";
+  src: url("../font/Metropolis-Black.otf");
+}
+@font-face {
+  font-family: "Bold";
+  src: url("../font/Metropolis-Bold.otf");
+}
+@font-face {
+  font-family: "ExtraBold";
+  src: url("../font/Metropolis-ExtraBold.otf");
+}
+@font-face {
+  font-family: "ExtraLight";
+  src: url("../font/Metropolis-ExtraLight.otf");
+}
+@font-face {
+  font-family: "Light";
+  src: url("../font/Metropolis-Light.otf");
+}
+@font-face {
+  font-family: "Medium";
+  src: url("../font/Metropolis-Medium.otf");
+}
+@font-face {
+  font-family: "Regular";
+  src: url("../font/Metropolis-Regular.otf");
+}
+@font-face {
+  font-family: "SemiBold";
+  src: url("../font/Metropolis-SemiBold.otf");
+}
+@font-face {
+  font-family: "Thin";
+  src: url("../font/Metropolis-Thin.otf");
+}
+/*
+	HTML5 Reset :: style.css
+	----------------------------------------------------------
+	We have learned much from/been inspired by/taken code where offered from:
+	Eric Meyer					:: http://meyerweb.com
+	HTML5 Doctor				:: http://html5doctor.com
+	and the HTML5 Boilerplate	:: http://html5boilerplate.com
+-------------------------------------------------------------------------------*/
+/* Let's default this puppy out
+-------------------------------------------------------------------------------*/
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+main, article, aside, figure, footer, header, nav, section, details, summary {
+  display: block;
+}
+
+/* Handle box-sizing while better addressing child elements:
+   http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* consider resetting the default cursor: https://gist.github.com/murtaugh/5247154 */
+/* Responsive images and other embedded objects */
+/* if you don't have full control over `img` tags (if you have to overcome attributes), consider adding height: auto */
+img,
+object,
+embed {
+  max-width: 100%;
+}
+
+/*
+   Note: keeping IMG here will cause problems if you're using foreground images as sprites.
+	In fact, it *will* cause problems with Google Maps' controls at small size.
+	If this is the case for you, try uncommenting the following:
+#map img {
+		max-width: none;
+}
+*/
+/* force a vertical scrollbar to prevent a jumpy page */
+html {
+  overflow-y: scroll;
+}
+
+/* we use a lot of ULs that aren't bulleted.
+	you'll have to restore the bullets within content,
+	which is fine because they're probably customized anyway */
+ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted #000;
+  cursor: help;
+}
+
+/* tables still need cellspacing="0" in the markup */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+th {
+  font-weight: bold;
+  vertical-align: bottom;
+}
+
+td {
+  font-weight: normal;
+  vertical-align: top;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+pre {
+  white-space: pre;
+  /* CSS2 */
+  white-space: pre-wrap;
+  /* CSS 2.1 */
+  white-space: pre-line;
+  /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word;
+  /* IE */
+}
+
+input[type=radio] {
+  vertical-align: text-bottom;
+}
+
+input[type=checkbox] {
+  vertical-align: bottom;
+}
+
+.ie7 input[type=checkbox] {
+  vertical-align: baseline;
+}
+
+.ie6 input {
+  vertical-align: text-bottom;
+}
+
+select, input, textarea {
+  font: 99% sans-serif;
+}
+
+table {
+  font-size: inherit;
+  font: 100%;
+}
+
+small {
+  font-size: 85%;
+}
+
+strong {
+  font-weight: bold;
+}
+
+td, td img {
+  vertical-align: top;
+}
+
+/* Make sure sup and sub don't mess with your line-heights http://gist.github.com/413930 */
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* standardize any monospaced elements */
+pre, code, kbd, samp {
+  font-family: monospace, sans-serif;
+}
+
+/* hand cursor on clickable elements */
+.clickable,
+label,
+input[type=button],
+input[type=submit],
+input[type=file],
+button {
+  cursor: pointer;
+}
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea {
+  margin: 0;
+}
+
+/* make buttons play nice in IE */
+button,
+input[type=button] {
+  width: auto;
+  overflow: visible;
+}
+
+/* scale images in IE7 more attractively */
+.ie7 img {
+  -ms-interpolation-mode: bicubic;
+}
+
+/* prevent BG image flicker upon hover
+   (commented out as usage is rare, and the filter syntax messes with some pre-processors)
+.ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
+*/
+/* let's clear some floats */
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+body {
+  background: linear-gradient(223.53deg, #a5feca 3.65%, #3edceb 31.56%, #2594ff 65.16%, #5533ff 102.22%) no-repeat 100%;
+  font-size: 62.5%;
+}
+
+.warper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.musicPlayer {
+  max-width: 375px;
+  width: 100%;
+  max-height: 812px;
+  height: 100%;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0px 5px 20px #2b6b9f;
+  overflow: hidden;
+  position: relative;
+}
+.musicPlayer .header {
+  font-family: "Bold";
+  font-size: 2.5rem;
+  line-height: 133%;
+  text-align: center;
+  margin-top: 37px;
+}
+.musicPlayer .content-music {
+  margin-top: 76px;
+}
+.musicPlayer .content-music .content-music__img {
+  margin: 0 auto 63px;
+  width: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  animation: spin360 7s infinite linear;
+}
+@keyframes spin360 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.musicPlayer .content-music .content-music__name {
+  text-align: center;
+}
+.musicPlayer .content-music .content-music__name .name-song {
+  font-family: "Bold";
+  font-size: 2.3rem;
+  line-height: 3.1rem;
+}
+.musicPlayer .content-music .content-music__name .name-author {
+  font-family: "Regular";
+  font-size: 1.7rem;
+  line-height: 2.3rem;
+}
+.musicPlayer .play-list {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.71);
+  box-shadow: 0px -19px 47px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(21px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 26px 26px 0px 0px;
+}
+.musicPlayer .music-nav .music-nav__timeline {
+  margin: 50px auto 0;
+  max-width: 310px;
+  background-color: #f2f2f2;
+  border: 3px solid #f2f2f2;
+  border-radius: 3px;
+  position: relative;
+}
+.musicPlayer .music-nav .music-nav__timeline::before {
+  content: "";
+  width: 100px;
+  background-color: #9570ff;
+  border: 3px solid #9570ff;
+  border-radius: 3px;
+  position: absolute;
+  top: -3px;
+  left: -3px;
+}
+.musicPlayer .music-nav .music-control {
+  margin-top: 30px;
+  padding: 0px 33px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.musicPlayer .music-nav .music-control__time {
+  font-family: "Medium";
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  color: #9570ff;
+}
+.musicPlayer .music-nav .music-control__play {
+  width: 61px;
+  height: 61px;
+  border-radius: 50%;
+  background: linear-gradient(223.53deg, #70c8ff 31.56%, rgba(149, 112, 255, 0.25) 65.16%) no-repeat 100%;
+  backdrop-filter: blur(19.6px);
+  box-shadow: 0px 4px 34px rgba(33, 33, 33, 0.08);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.musicPlayer .music-nav .music-control__time-end {
+  font-family: "Medium";
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  color: #bdbdbd;
+}
+
+/*# sourceMappingURL=global.css.map */

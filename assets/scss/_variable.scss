@@ -1,0 +1,63 @@
+$bg: #fff;
+
+
+//Display Flex
+@mixin flex($direction:row, $alignItems: stretch, $justifyContent:flex-start){
+  flex-direction: $direction;
+  align-items: $alignItems ;
+  justify-content: $justifyContent;
+}
+
+//Grid
+
+//Font
+@mixin font($fontFamily, $fontSize, $lineHeight) {
+  font-family: $fontFamily;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+}
+
+@font-face {
+    font-family: "Black";
+    src: url("../font/Metropolis-Black.otf");
+  }
+
+@font-face {
+    font-family: "Bold";
+    src: url("../font/Metropolis-Bold.otf");
+  }
+
+@font-face {
+    font-family: "ExtraBold";
+    src: url("../font/Metropolis-ExtraBold.otf");
+  }
+
+@font-face {
+    font-family: "ExtraLight";
+    src: url("../font/Metropolis-ExtraLight.otf");
+  }
+
+@font-face {
+    font-family: "Light";
+    src: url("../font/Metropolis-Light.otf");
+  }
+
+@font-face {
+    font-family: "Medium";
+    src: url("../font/Metropolis-Medium.otf");
+  }
+
+@font-face {
+    font-family: "Regular";
+    src: url("../font/Metropolis-Regular.otf");
+  }
+
+@font-face {
+    font-family: "SemiBold";
+    src: url("../font/Metropolis-SemiBold.otf");
+  }
+
+@font-face {
+    font-family: "Thin";
+    src: url("../font/Metropolis-Thin.otf");
+  }
