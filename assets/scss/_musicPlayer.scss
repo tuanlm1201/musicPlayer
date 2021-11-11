@@ -37,6 +37,8 @@
 
     .content-music__name {
       text-align: center;
+      margin: 0px 25px;
+      overflow: hidden;
 
       .name-song {
         @include font("Bold", 2.3rem, 3.1rem);
@@ -45,122 +47,170 @@
 
       .name-author {
         @include font("Regular", 1.7rem, 2.3rem);
+        color: #828282;
+        animation: textMoveRight 2s linear infinite forwards;
       }
 
       @keyframes textMove {
-        0%{
+        0% {
           transform: translateX(-100%);
         }
-        50%{
+        50% {
           transform: translateX(0);
         }
-        100%{
+        100% {
           transform: translateX(100%);
         }
       }
-      }
+
+      // @keyframes textMoveRight {
+      //   0%{
+      //     transform: translateX(50px);
+      //   }
+      //   50%{
+      //     transform: translateX(-50px);
+      //   }
+      //   75%{
+      //     transform: translateX(0px);
+      //   }
+      //   100%{
+      //     transform: translateX(50px);
+      //   }
+      // }
     }
   }
+}
 
-  .play-list {
-    $heightList: 300px;
-    position: absolute;
-    bottom: -$heightList;
-    left: 0;
-    right: 0;
-    z-index: 99;
-    background: rgba(255, 255, 255, 0.71);
-    box-shadow: 0px -19px 47px rgba(0, 0, 0, 0.06);
-    backdrop-filter: blur(21px);
-    border-radius: 26px 26px 0px 0px;
-    transition: all .5s linear;
+.play-list {
+  $heightList: 300px;
+  position: absolute;
+  bottom: -$heightList;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: rgba(255, 255, 255, 0.71);
+  box-shadow: 0px -19px 47px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(21px);
+  border-radius: 26px 26px 0px 0px;
+  transition: all 0.5s linear;
 
-    .heading {
-      padding: 20px 22px;
+  .heading {
+    padding: 20px 22px;
+    @include flex(row, center, space-between);
+    @include font("Bold", 1.7rem, 2.5rem);
+
+    &-left {
       @include flex(row, center, space-between);
-      @include font("Bold", 1.7rem, 2.5rem);
-
-      &-left {
-        @include flex(row, center, space-between);
-        p {
-          margin-left: 10px;
-        }
-      }
-
-      .open-list {
-        height: 43px;
-        width: 43px;
-        border-radius: 50%;
-        @include flex(row, center, center);
-        filter: drop-shadow(0px 1px 47px rgba(0, 0, 0, 0.05));
-        background: #ffffff;
-        border: 1px solid #f2f2f2;
-        cursor: pointer;
+      p {
+        margin-left: 10px;
       }
     }
 
-    .list-music {
-      height: $heightList;
+    .btn-arrow {
+      height: 43px;
+      width: 43px;
+      border-radius: 50%;
+      @include flex(row, center, center);
+      filter: drop-shadow(0px 1px 47px rgba(0, 0, 0, 0.05));
+      background: #ffffff;
+      border: 1px solid #f2f2f2;
+      cursor: pointer;
+    }
+
+    .close-list {
+      display: none;
     }
   }
 
-  .music-nav {
-    .music-nav__timeline {
-      margin: 50px auto 0;
-      max-width: 310px;
-      background-color: #f2f2f2;
-      border: 3px solid #f2f2f2;
+  .list-music {
+    height: $heightList;
+    overflow: scroll;
+
+    .song {
+      padding: 0px 22px 20px;
+      @include flex(row,center, );
+
+      &__thumb {
+        width: 40px;
+        height: 40px;
+        background-position: center;
+        background-size: contain;
+        border-radius: 50%;
+      }
+      
+      &__body{
+        margin-left: 20px;
+      }
+
+      &__title{
+        @include font("SemiBold", 1rem, 1.6rem);
+      }
+
+      &__author{
+        @include font("Regular", 0.8rem, 1.6rem);
+        color: #828282;
+      }
+    }
+  }
+}
+
+.music-nav {
+  .music-nav__timeline {
+    margin: 50px auto 0;
+    max-width: 310px;
+    background-color: #f2f2f2;
+    border: 3px solid #f2f2f2;
+    border-radius: 3px;
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 100px;
+      background-color: #9570ff;
+      border: 3px solid #9570ff;
       border-radius: 3px;
-      position: relative;
+      position: absolute;
+      top: -3px;
+      left: -3px;
+    }
+  }
 
-      &::before {
-        content: "";
-        width: 100px;
-        background-color: #9570ff;
-        border: 3px solid #9570ff;
-        border-radius: 3px;
-        position: absolute;
-        top: -3px;
-        left: -3px;
-      }
+  .music-control {
+    margin-top: 30px;
+    padding: 0px 33px;
+    display: flex;
+    @include flex(row, center, space-between);
+
+    &__time {
+      @include font("Medium", 1.2rem, 1.6rem);
+      color: #9570ff;
     }
 
-    .music-control {
-      margin-top: 30px;
-      padding: 0px 33px;
+    &__play {
+      width: 61px;
+      height: 61px;
+      border-radius: 50%;
+      cursor: pointer;
+      background: linear-gradient(
+          223.53deg,
+          #70c8ff 31.56%,
+          rgba(149, 112, 255, 0.25) 65.16%
+        )
+        no-repeat 100%;
+      backdrop-filter: blur(19.6px);
+      box-shadow: 0px 4px 34px rgba(33, 33, 33, 0.08);
       display: flex;
-      @include flex(row, center, space-between);
-
-      &__time {
-        @include font("Medium", 1.2rem, 1.6rem);
-        color: #9570ff;
-      }
-
-      &__play {
-        width: 61px;
-        height: 61px;
-        border-radius: 50%;
-        cursor: pointer;
-        background: linear-gradient(
-            223.53deg,
-            #70c8ff 31.56%,
-            rgba(149, 112, 255, 0.25) 65.16%
-          )
-          no-repeat 100%;
-        backdrop-filter: blur(19.6px);
-        box-shadow: 0px 4px 34px rgba(33, 33, 33, 0.08);
-        display: flex;
-        @include flex(row, center, center);
-      }
-
-      &__skip-next,
-      &__skip-prev {
-        cursor: pointer;
-      }
-
-      &__time-end {
-        @include font("Medium", 1.2rem, 1.6rem);
-        color: #bdbdbd;
-      }
+      @include flex(row, center, center);
     }
+
+    &__skip-next,
+    &__skip-prev {
+      cursor: pointer;
+    }
+
+    &__time-end {
+      @include font("Medium", 1.2rem, 1.6rem);
+      color: #bdbdbd;
+    }
+  }
 }

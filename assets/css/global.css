@@ -312,6 +312,8 @@ body {
 }
 .musicPlayer .content-music .content-music__name {
   text-align: center;
+  margin: 0px 25px;
+  overflow: hidden;
 }
 .musicPlayer .content-music .content-music__name .name-song {
   font-family: "Bold";
@@ -323,6 +325,8 @@ body {
   font-family: "Regular";
   font-size: 1.7rem;
   line-height: 2.3rem;
+  color: #828282;
+  animation: textMoveRight 2s linear infinite forwards;
 }
 @keyframes textMove {
   0% {
@@ -367,7 +371,7 @@ body {
 .play-list .heading-left p {
   margin-left: 10px;
 }
-.play-list .heading .open-list {
+.play-list .heading .btn-arrow {
   height: 43px;
   width: 43px;
   border-radius: 50%;
@@ -380,8 +384,40 @@ body {
   border: 1px solid #f2f2f2;
   cursor: pointer;
 }
+.play-list .heading .close-list {
+  display: none;
+}
 .play-list .list-music {
   height: 300px;
+  overflow: scroll;
+}
+.play-list .list-music .song {
+  padding: 0px 22px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.play-list .list-music .song__thumb {
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-size: contain;
+  border-radius: 50%;
+}
+.play-list .list-music .song__body {
+  margin-left: 20px;
+}
+.play-list .list-music .song__title {
+  font-family: "SemiBold";
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+.play-list .list-music .song__author {
+  font-family: "Regular";
+  font-size: 0.8rem;
+  line-height: 1.6rem;
+  color: #828282;
 }
 
 .music-nav .music-nav__timeline {
