@@ -8,10 +8,12 @@ body {
     )
     no-repeat 100%;
   font-size: 62.5%;
+  min-height: 100vh;
+  height: 100%;
 }
 
 .warper {
-  height: 100vh;
+  height: 1000px;
   display: flex;
   align-items: center;
 }

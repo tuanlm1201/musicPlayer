@@ -266,10 +266,12 @@ input[type=button] {
 body {
   background: linear-gradient(223.53deg, #a5feca 3.65%, #3edceb 31.56%, #2594ff 65.16%, #5533ff 102.22%) no-repeat 100%;
   font-size: 62.5%;
+  min-height: 100vh;
+  height: 100%;
 }
 
 .warper {
-  height: 100vh;
+  height: 1000px;
   display: flex;
   align-items: center;
 }
@@ -298,9 +300,13 @@ body {
 .musicPlayer .content-music .content-music__img {
   margin: 0 auto 63px;
   width: 250px;
+  height: 250px;
   border-radius: 50%;
   overflow: hidden;
   animation: spin360 7s infinite linear;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 @keyframes spin360 {
   0% {
@@ -316,6 +322,11 @@ body {
   overflow: hidden;
 }
 .musicPlayer .content-music .content-music__name .name-song {
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   font-family: "Bold";
   font-size: 2.3rem;
   line-height: 3.1rem;
@@ -323,20 +334,27 @@ body {
 }
 .musicPlayer .content-music .content-music__name .name-author {
   font-family: "Regular";
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   line-height: 2.3rem;
   color: #828282;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   animation: textMoveRight 2s linear infinite forwards;
 }
 @keyframes textMove {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(50px);
   }
   50% {
-    transform: translateX(0);
+    transform: translateX(-50px);
+  }
+  75% {
+    transform: translateX(0px);
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(50px);
   }
 }
 
@@ -397,10 +415,11 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  cursor: pointer;
 }
 .play-list .list-music .song__thumb {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   background-position: center;
   background-size: contain;
   border-radius: 50%;
@@ -420,25 +439,19 @@ body {
   color: #828282;
 }
 
-.music-nav .music-nav__timeline {
-  margin: 50px auto 0;
-  max-width: 310px;
-  background-color: #f2f2f2;
-  border: 3px solid #f2f2f2;
-  border-radius: 3px;
-  position: relative;
+.music-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
-.music-nav .music-nav__timeline::before {
-  content: "";
-  width: 100px;
-  background-color: #9570ff;
-  border: 3px solid #9570ff;
-  border-radius: 3px;
-  position: absolute;
-  top: -3px;
-  left: -3px;
+.music-nav .progress {
+  width: 309px;
+  margin: 0px auto;
+  cursor: pointer;
 }
 .music-nav .music-control {
+  width: 100%;
   margin-top: 30px;
   padding: 0px 33px;
   display: flex;
@@ -462,10 +475,23 @@ body {
   backdrop-filter: blur(19.6px);
   box-shadow: 0px 4px 34px rgba(33, 33, 33, 0.08);
   display: flex;
-  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+.music-nav .music-control__play .playUI {
+  display: block;
+  font-size: 2rem;
+}
+.music-nav .music-control__play .pauseUI {
+  display: none;
+  font-size: 2rem;
+}
+.music-nav .music-control .music-control__play.playing .playUI {
+  display: none;
+}
+.music-nav .music-control .music-control__play.playing .pauseUI {
+  display: block;
 }
 .music-nav .music-control__skip-next, .music-nav .music-control__skip-prev {
   cursor: pointer;

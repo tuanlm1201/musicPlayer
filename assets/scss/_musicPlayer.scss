@@ -21,9 +21,13 @@
     .content-music__img {
       margin: 0 auto 63px;
       width: 250px;
+      height: 250px;
       border-radius: 50%;
       overflow: hidden;
       animation: spin360 7s infinite linear;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
 
       @keyframes spin360 {
         0% {
@@ -41,25 +45,41 @@
       overflow: hidden;
 
       .name-song {
+        width: max-content;
+        @include flex(row, center, center);
         @include font("Bold", 2.3rem, 3.1rem);
         animation: textMove 5s linear infinite forwards;
       }
 
       .name-author {
-        @include font("Regular", 1.7rem, 2.3rem);
+        // width: fit-content;
+        @include font("Regular", 1.3rem, 2.3rem);
         color: #828282;
+        @include flex(row, center, center);
         animation: textMoveRight 2s linear infinite forwards;
       }
 
       @keyframes textMove {
+        // 0% {
+        //   transform: translateX(-100%);
+        // }
+        // 50% {
+        //   transform: translateX(0);
+        // }
+        // 100% {
+        //   transform: translateX(100%);
+        // }
         0% {
-          transform: translateX(-100%);
+          transform: translateX(50px);
         }
         50% {
-          transform: translateX(0);
+          transform: translateX(-50px);
+        }
+        75% {
+          transform: translateX(0px);
         }
         100% {
-          transform: translateX(100%);
+          transform: translateX(50px);
         }
       }
 
@@ -128,25 +148,26 @@
 
     .song {
       padding: 0px 22px 20px;
-      @include flex(row,center, );
+      @include flex(row, center);
+      cursor: pointer;
 
       &__thumb {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         background-position: center;
         background-size: contain;
         border-radius: 50%;
       }
-      
-      &__body{
+
+      &__body {
         margin-left: 20px;
       }
 
-      &__title{
+      &__title {
         @include font("SemiBold", 1rem, 1.6rem);
       }
 
-      &__author{
+      &__author {
         @include font("Regular", 0.8rem, 1.6rem);
         color: #828282;
       }
@@ -155,27 +176,16 @@
 }
 
 .music-nav {
-  .music-nav__timeline {
-    margin: 50px auto 0;
-    max-width: 310px;
-    background-color: #f2f2f2;
-    border: 3px solid #f2f2f2;
-    border-radius: 3px;
-    position: relative;
+  @include flex(column, center);
 
-    &::before {
-      content: "";
-      width: 100px;
-      background-color: #9570ff;
-      border: 3px solid #9570ff;
-      border-radius: 3px;
-      position: absolute;
-      top: -3px;
-      left: -3px;
-    }
+  .progress {
+    width: 309px;
+    margin: 0px auto;
+    cursor: pointer;
   }
 
   .music-control {
+    width: 100%;
     margin-top: 30px;
     padding: 0px 33px;
     display: flex;
@@ -199,8 +209,26 @@
         no-repeat 100%;
       backdrop-filter: blur(19.6px);
       box-shadow: 0px 4px 34px rgba(33, 33, 33, 0.08);
-      display: flex;
       @include flex(row, center, center);
+
+      .playUI {
+        display: block;
+        font-size: 2rem;
+      }
+
+      .pauseUI {
+        display: none;
+        font-size: 2rem;
+      }
+    }
+    .music-control__play.playing {
+      .playUI {
+        display: none;
+      }
+
+      .pauseUI {
+        display: block;
+      }
     }
 
     &__skip-next,
