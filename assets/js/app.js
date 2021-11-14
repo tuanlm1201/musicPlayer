@@ -81,7 +81,7 @@ const app = {
   songs: listSong,
   isPlaying: false,
   render: function () {
-    const htmls = this.songs.map((song,index) => {
+    const htmls = this.songs.map((song, index) => {
       return `<div class="song" data-index="${index}">
           <div class="song__thumb" style="background-image: url(${song.img})"></div>
           <div class="song__body">
@@ -100,7 +100,6 @@ const app = {
   },
   handleEvents: function () {
     //Xử lí thumb quay
-    console.log(cdThumb.style.animation);
 
     //Xử lí khi click Play
     btnPlay.onclick = () => {
@@ -123,18 +122,42 @@ const app = {
       btnPlay.classList.remove("playing");
     };
 
+    //Format time
+    function formatSecondsAsTime(secs) {
+      var hr = Math.floor(secs / 3600);
+      var min = Math.floor((secs - (hr * 3600)) / 60);
+      var sec = Math.floor(secs - (hr * 3600) - (min * 60));
+
+      if (min < 10) {
+        min = "0" + min;
+      }
+      if (sec < 10) {
+        sec = "0" + sec;
+      }
+
+      return min + ':' + sec;
+    }
+
+
     //Khi tiến độ bài hát thay đổi
     audio.ontimeupdate = function () {
+      const currTime = Math.floor(audio.currentTime);
+      const duration = Math.floor(audio.duration);
+
       if (audio.duration) {
         const progressPercent = Math.floor(
           (audio.currentTime / audio.duration) * 100
         );
         progress.value = progressPercent;
 
-        currentTimeSong.innerHTML = Math.floor(audio.currentTime);
-        console.log(audio.currentTime);
-        endTimeSong.innerHTML = Math.floor(audio.duration);
-        console.log(audio.duration);
+        //Xử lí thời gian 
+        if (isNaN(currTime) || isNaN(duration)) {
+          currentTimeSong.innerHTML = '00:00';
+          endTimeSong.innerHTML = '00:00';
+        } else {
+          currentTimeSong.innerHTML = formatSecondsAsTime(currTime);
+          endTimeSong.innerHTML = formatSecondsAsTime(duration);
+        }
       }
     };
 
@@ -162,10 +185,10 @@ const app = {
     };
 
     //Xử lí khi click bài hát trong Playlist
-    listMusic.onclick = (e) =>{
+    listMusic.onclick = (e) => {
       const songElement = e.target.closest('.song:not(.active)');
 
-      if(e.target.closest('.song:not(.active)')){
+      if (e.target.closest('.song:not(.active)')) {
         console.log(songElement.dataset.index)
         this.currentIndex = Number(songElement.dataset.index);
         this.loadCurrentSong();
@@ -178,9 +201,6 @@ const app = {
     nameAuthor.textContent = this.currentSong.author;
     cdThumb.style.backgroundImage = `url('${this.currentSong.img}')`;
     audio.src = this.currentSong.src;
-    if (audio.duration) {
-      endTimeSong.innerHTML = Math.floor(audio.duration);
-    }
   },
   nextSong: function () {
     this.currentIndex++;
